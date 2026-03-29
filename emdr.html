@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMDR for Trauma — James Baker Psychotherapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+
+  :root {
+    --pacific-blue: #2C5F7A;
+    --ink: #1C1C1C;
+    --fog: #7FA8B8;
+    --mist: #B8D0DA;
+    --canopy: #4A5E45;
+    --parchment: #F2EDE4;
+    --cream: #FAF8F4;
+    --stone: #8A8276;
+    --nav-height: 88px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: var(--nav-height);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem;
+    background: rgba(250,248,244,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(44,95,122,0.1);
+  }
+  .nav-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 1.55rem; font-weight: 500;
+    color: var(--ink); text-decoration: none;
+    line-height: 1.2; letter-spacing: -0.01em; flex-shrink: 0;
+  }
+  .nav-logo span {
+    display: block; font-family: "DM Sans", sans-serif;
+    font-size: 0.72rem; font-weight: 400;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--stone); margin-top: 3px;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+    align-items: center; margin-left: auto; padding-left: 3rem;
+  }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--stone); text-decoration: none;
+    white-space: nowrap; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--pacific-blue); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-cta {
+    font-size: 0.88rem !important; font-weight: 500 !important;
+    color: var(--pacific-blue) !important;
+    border: 1px solid var(--pacific-blue) !important;
+    padding: 0.6rem 1.4rem; white-space: nowrap;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--pacific-blue) !important; color: var(--cream) !important; }
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 6px; background: none; border: none; margin-left: auto;
+  }
+  .nav-hamburger span {
+    display: block; width: 26px; height: 2px;
+    background: var(--ink); transition: all 0.3s ease; transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer {
+    display: none; position: fixed;
+    top: var(--nav-height); left: 0; right: 0;
+    background: rgba(250,248,244,0.98);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--mist);
+    padding: 2rem 2.5rem 2.5rem; z-index: 199;
+    flex-direction: column;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-size: 1.05rem; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--stone); text-decoration: none;
+    padding: 1rem 0; border-bottom: 1px solid var(--mist); transition: color 0.2s;
+  }
+  .nav-drawer a:last-child { border-bottom: none; }
+  .nav-drawer a:hover { color: var(--pacific-blue); }
+  .nav-drawer .drawer-cta {
+    margin-top: 1.5rem; display: block;
+    background: var(--pacific-blue); color: var(--cream) !important;
+    text-align: center; padding: 1rem !important;
+    border: none !important; font-weight: 500 !important; letter-spacing: 0.12em;
+  }
+  @media (max-width: 1100px) {
+    nav { padding: 0 2rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+  @media (max-width: 560px) {
+    nav { padding: 0 1.2rem; height: auto; min-height: 64px; }
+    .nav-logo { font-size: 1.05rem; white-space: normal; max-width: calc(100vw - 70px); line-height: 1.25; }
+    .nav-logo span { font-size: 0.6rem; letter-spacing: 0.1em; margin-top: 2px; }
+    .nav-hamburger { flex-shrink: 0; align-self: center; }
+  }
+
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(28,28,28,0.7); z-index: 500;
+    align-items: center; justify-content: center;
+    padding: 1.5rem; backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--cream); max-width: 520px; width: 100%;
+    padding: 3.5rem; position: relative;
+    animation: modalIn 0.3s ease both;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.4rem;
+    background: none; border: none; font-size: 1.5rem;
+    color: var(--stone); cursor: pointer; line-height: 1;
+    padding: 0.2rem 0.4rem; transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--ink); }
+  .modal-eyebrow {
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--canopy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .modal-eyebrow::before { content: ""; width: 1.8rem; height: 1px; background: var(--canopy); }
+  .modal h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem; font-weight: 400;
+    line-height: 1.25; color: var(--ink); margin-bottom: 0.8rem;
+  }
+  .modal-sub {
+    font-family: "Lora", serif; font-size: 0.98rem;
+    line-height: 1.75; color: var(--stone); margin-bottom: 2.2rem;
+  }
+  .form-row { margin-bottom: 1.4rem; }
+  .form-row label {
+    display: block; font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--stone); margin-bottom: 0.5rem;
+  }
+  .form-row input, .form-row textarea {
+    width: 100%; background: white; border: 1px solid var(--mist);
+    padding: 0.85rem 1rem; font-family: "Lora", serif; font-size: 1rem;
+    color: var(--ink); outline: none; transition: border-color 0.2s;
+    border-radius: 0; -webkit-appearance: none;
+  }
+  .form-row input:focus, .form-row textarea:focus { border-color: var(--pacific-blue); }
+  .form-row textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: var(--pacific-blue); color: var(--cream);
+    border: none; font-family: "DM Sans", sans-serif;
+    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 1.1rem; cursor: pointer;
+    transition: background 0.25s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--ink); }
+  .form-note { font-size: 0.78rem; color: var(--stone); margin-top: 1rem; line-height: 1.6; text-align: center; }
+  .form-success { display: none; text-align: center; padding: 2rem 0; }
+  .form-success h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 0.8rem;
+  }
+  .form-success p { font-family: "Lora", serif; font-size: 1rem; line-height: 1.75; color: var(--stone); }
+  @media (max-width: 560px) { .modal { padding: 2.5rem 1.5rem; } .modal h2 { font-size: 1.5rem; } }
+
+
+  .page-header {
+    padding-top: var(--nav-height);
+    background: var(--ink); position: relative;
+    overflow: hidden; min-height: 300px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .page-header-inner {
+    position: relative; z-index: 1;
+    padding: 4rem 5rem 3.5rem; max-width: 860px;
+  }
+  .breadcrumb {
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(250,248,244,0.35); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .breadcrumb a { color: rgba(250,248,244,0.35); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: rgba(250,248,244,0.65); }
+  .breadcrumb span { color: rgba(250,248,244,0.2); }
+  .page-header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.75rem, 4.5vw, 3.8rem);
+    font-weight: 400; line-height: 1.18;
+    color: var(--parchment); margin-bottom: 1.2rem; letter-spacing: -0.01em;
+  }
+  .page-header h1 em { font-style: italic; color: var(--fog); }
+  .page-header-sub {
+    font-family: "Lora", serif; font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1.75; color: rgba(242,237,228,0.6); max-width: 580px;
+  }
+  @media (max-width: 768px) { .page-header-inner { padding: 3rem 1.5rem 2.5rem; } }
+
+
+  .content-wrap {
+    display: grid; grid-template-columns: 1fr 320px;
+    gap: 6rem; max-width: 1100px; margin: 0 auto;
+    padding: 6rem 5rem; align-items: start;
+  }
+  .content-main > * + * { margin-top: 1.8rem; }
+  .content-main p { font-family: "Lora", serif; font-size: 1.08rem; line-height: 1.85; color: #3a3835; }
+  .content-main p.lead {
+    font-family: "Playfair Display", serif; font-size: 1.35rem;
+    font-weight: 400; font-style: italic; line-height: 1.6;
+    color: var(--pacific-blue); padding-left: 1.5rem;
+    border-left: 3px solid var(--pacific-blue); margin-bottom: 2.5rem;
+  }
+  .content-main h2 {
+    font-family: "Playfair Display", serif; font-size: 1.7rem;
+    font-weight: 400; color: var(--ink); margin-top: 3.5rem; margin-bottom: 0.2rem;
+  }
+  .content-sidebar { position: sticky; top: 110px; }
+  .sidebar-cta { background: var(--pacific-blue); padding: 2.5rem; margin-bottom: 1.5rem; }
+  .sidebar-cta h3 {
+    font-family: "Playfair Display", serif; font-size: 1.3rem;
+    font-weight: 400; color: var(--parchment); margin-bottom: 1rem; line-height: 1.3;
+  }
+  .sidebar-cta p { font-size: 0.92rem; line-height: 1.7; color: rgba(242,237,228,0.65); margin-bottom: 1.8rem; }
+  .btn-sidebar {
+    display: block; background: var(--parchment); color: var(--pacific-blue);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 1rem 1.5rem; text-decoration: none;
+    text-align: center; transition: background 0.2s; margin-bottom: 0.8rem;
+  }
+  .btn-sidebar:hover { background: var(--cream); }
+  .sidebar-phone { font-size: 0.82rem; color: rgba(242,237,228,0.45); text-align: center; display: block; }
+  .sidebar-phone strong { color: rgba(242,237,228,0.75); font-weight: 500; }
+  .sidebar-also { background: var(--parchment); border: 1px solid var(--mist); padding: 2rem; }
+  .sidebar-also h4 { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 1.2rem; }
+  .sidebar-also-link {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.8rem 0; border-bottom: 1px solid var(--mist);
+    text-decoration: none; color: var(--ink);
+    font-family: "Playfair Display", serif; font-size: 1rem; transition: color 0.2s;
+  }
+  .sidebar-also-link:last-child { border-bottom: none; }
+  .sidebar-also-link:hover { color: var(--pacific-blue); }
+  .sidebar-also-link span { color: var(--mist); font-size: 0.85rem; }
+  @media (max-width: 900px) {
+    .content-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 3.5rem 1.5rem; }
+    .content-sidebar { position: static; }
+    .content-main p { font-size: 0.98rem; }
+    .content-main p.lead { font-size: 1.15rem; }
+  }
+
+
+  .btn-primary {
+    display: inline-block; background: var(--pacific-blue); color: var(--cream);
+    font-size: 0.92rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 1.1rem 2.4rem; text-decoration: none;
+    white-space: nowrap; transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-block; border: 1px solid rgba(242,237,228,0.3);
+    color: var(--parchment); font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 1rem 2.2rem;
+    text-decoration: none; align-self: flex-start;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .btn-ghost:hover { border-color: var(--parchment); background: rgba(242,237,228,0.08); }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+
+  footer { background: var(--ink); padding: 4.5rem 5.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: "Playfair Display", serif; font-size: 1.15rem; color: var(--parchment); font-weight: 400; }
+  .footer-logo span { display: block; font-family: "DM Sans", sans-serif; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-top: 5px; }
+  .footer-links { display: flex; gap: 2.2rem; list-style: none; }
+  .footer-links a { font-size: 0.86rem; letter-spacing: 0.08em; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--parchment); }
+  .footer-copy { font-size: 0.76rem; color: #4a4845; }
+  @media (max-width: 768px) {
+    footer { flex-direction: column; gap: 2rem; padding: 3rem 1.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+
+  .areas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mist); margin-top: 2.5rem; }
+  .area-item { background: var(--cream); padding: 1.6rem 1.8rem; transition: background 0.2s; }
+  .area-item:hover { background: var(--parchment); }
+  .area-title { font-family: "Playfair Display", serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+  .area-desc { font-size: 0.92rem; line-height: 1.65; color: var(--stone); }
+  .ir-callout {
+    margin-top: 3.5rem; background: var(--parchment);
+    border: 1px solid var(--mist); border-left: 3px solid var(--canopy);
+    padding: 2rem 2.2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+  }
+  .ir-callout-text h3 { font-family: "Playfair Display", serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+  .ir-callout-text p { font-family: "DM Sans", sans-serif !important; font-size: 0.92rem !important; line-height: 1.65 !important; color: var(--stone) !important; }
+  .ir-callout-link {
+    flex-shrink: 0; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--canopy); text-decoration: none;
+    border: 1px solid var(--canopy); padding: 0.7rem 1.4rem; white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+  }
+  .ir-callout-link:hover { background: var(--canopy); color: var(--cream); }
+  @media (max-width: 768px) { .areas-grid { grid-template-columns: 1fr; } .ir-callout { flex-direction: column; align-items: flex-start; } }
+
+
+
+  .emdr-intro-block {
+    background: var(--parchment);
+    border: 1px solid var(--mist);
+    border-left: 3px solid var(--pacific-blue);
+    padding: 2.2rem 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .emdr-intro-block p {
+    font-family: "Lora", serif !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+    color: #3a3835 !important;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--mist);
+    margin-top: 2.5rem;
+  }
+  .how-item {
+    background: var(--cream);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .how-item:hover { background: var(--parchment); }
+  .how-item-num {
+    font-family: "Playfair Display", serif;
+    font-size: 0.9rem;
+    color: var(--mist);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .how-item-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--pacific-blue);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .how-item-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--stone);
+  }
+
+  .endorsed-block {
+    margin-top: 3rem;
+    background: var(--ink);
+    padding: 2.5rem;
+  }
+  .endorsed-block h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--parchment);
+    margin-bottom: 1.2rem;
+  }
+  .endorsed-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .endorsed-list li {
+    font-size: 0.92rem;
+    color: rgba(242,237,228,0.55);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .endorsed-list li::before {
+    content: "";
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--fog);
+    flex-shrink: 0;
+  }
+
+  .options-block {
+    margin-top: 3rem;
+    background: var(--parchment);
+    border: 1px solid var(--mist);
+    padding: 2.5rem;
+  }
+  .options-block h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  .options-block p {
+    font-family: "Lora", serif !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+    color: #3a3835 !important;
+  }
+  .options-block p + p { margin-top: 1rem; }
+
+  @media (max-width: 768px) {
+    .how-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* Logistics dropdown */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
+  .nav-dropdown-toggle::after { content: "\25BE"; font-size: 0.55rem; opacity: 0.5; margin-left: 2px; }
+  .nav-dropdown-menu {
+    visibility: hidden; opacity: 0; pointer-events: none;
+    position: absolute; top: 100%; padding-top: 10px; left: 50%; transform: translateX(-50%);
+    background: rgba(250,248,244,0.99); backdrop-filter: blur(14px);
+    border: 1px solid var(--mist); box-shadow: 0 8px 24px rgba(28,28,28,0.1);
+    list-style: none; min-width: 150px; z-index: 300; padding: 0.6rem 0;
+    transition: opacity 0.18s ease, visibility 0.18s ease;
+  }
+  .nav-dropdown-menu li a {
+    display: block; padding: 0.65rem 1.4rem;
+    font-size: 0.82rem !important; font-weight: 400 !important;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--stone) !important; white-space: nowrap;
+    border: none !important; text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-dropdown-menu li a:hover { color: var(--pacific-blue) !important; background: var(--parchment); }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown.open .nav-dropdown-menu { visibility: visible; opacity: 1; pointer-events: auto; }
+  /* Bridge gap between toggle and menu so hover doesn't break */
+  .nav-dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 0; right: 0;
+    height: 14px;
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+<!-- Hidden form for Netlify form detection -->
+<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="contact">
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <textarea name="message"></textarea>
+  <button type="submit">Send</button>
+</form>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    James Baker Psychotherapy
+    <span>Licensed Marriage &amp; Family Therapist · Santa Rosa, CA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="mens-therapy.html" class="active">Men</a></li>
+    <li><a href="couples-therapy.html">Couples</a></li>
+    <li><a href="emdr.html" class="active">EMDR</a></li>
+    <li><a href="integrity-reset.html">Integrity Reset</a></li>
+    <li><a href="blog.html">Writing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Logistics</a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="rates.html">Rates</a></li>
+        <li><a href="location.html">Location</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </li>
+    <li><a href="#" class="nav-cta open-modal">Free Consultation</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="mens-therapy.html" class="active">Men</a>
+  <a href="couples-therapy.html">Couples</a>
+  <a href="emdr.html" class="active">EMDR</a>
+  <a href="integrity-reset.html">Integrity Reset</a>
+  <a href="blog.html">Writing</a>
+  <a href="about.html">About</a>
+  <a href="rates.html">Rates</a>
+  <a href="location.html">Location</a>
+  <a href="faq.html">FAQ</a>
+  <a href="#" class="drawer-cta open-modal">Free Consultation</a>
+</div>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>EMDR for Trauma</div>
+    <h1>Some things don't respond<br>to talk therapy alone.<br><em>EMDR works differently.</em></h1>
+    <p class="page-header-sub">For a lot of people, it works better. Here's what it is, how it works, and whether it might be right for you.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <div class="content-main">
+
+    <p class="lead">EMDR stands for Eye Movement Desensitization and Reprocessing. The name is a mouthful, but the process is straightforward: it helps your brain finish processing experiences it got stuck on.</p>
+
+    <p>Traumatic memories don't always work like regular memories. Instead of fading and integrating over time, they can stay raw and reactive, surfacing in ways that feel out of proportion to what's happening now. EMDR works by pairing those memories with bilateral stimulation while you're in a calm, guided state. Over time this allows the memory to be reprocessed and stored differently, losing much of its emotional charge.</p>
+
+    <p>It's recognized and endorsed by the American Psychiatric Association, the Department of Veterans Affairs, the Department of Defense, and the World Health Organization as an effective treatment for trauma and PTSD.</p>
+
+    <h2>What happens in a session</h2>
+
+    <div class="how-grid">
+      <div class="how-item">
+        <span class="how-item-num">01</span>
+        <span class="how-item-title">Preparation</span>
+        <p class="how-item-desc">Before any processing begins we spend time building a clear picture of what we're working on and making sure you have tools to stay grounded.</p>
+      </div>
+      <div class="how-item">
+        <span class="how-item-num">02</span>
+        <span class="how-item-title">Bilateral stimulation</span>
+        <p class="how-item-desc">During processing you follow a moving stimulus with your eyes, or use tapping, while briefly accessing the target memory. This mimics what the brain does naturally during REM sleep.</p>
+      </div>
+      <div class="how-item">
+        <span class="how-item-num">03</span>
+        <span class="how-item-title">Reprocessing</span>
+        <p class="how-item-desc">The memory gradually loses its intensity. Most people find that what felt unbearable becomes something they can recall without being overtaken by it.</p>
+      </div>
+      <div class="how-item">
+        <span class="how-item-num">04</span>
+        <span class="how-item-title">Integration</span>
+        <p class="how-item-desc">We close each session carefully, making sure you're grounded before you leave. The processing continues between sessions as your brain consolidates the work.</p>
+      </div>
+    </div>
+
+    <div class="endorsed-block">
+      <h3>Recognized as effective by</h3>
+      <ul class="endorsed-list">
+        <li>American Psychiatric Association</li>
+        <li>Department of Veterans Affairs</li>
+        <li>Department of Defense</li>
+        <li>World Health Organization</li>
+        <li>Substance Abuse and Mental Health Services Administration (SAMHSA)</li>
+      </ul>
+    </div>
+
+    <h2>How it fits into treatment</h2>
+
+    <div class="options-block">
+      <h3>Flexible options</h3>
+      <p>EMDR can be integrated into ongoing therapy, used as a focused short-term treatment for a specific issue, or run alongside work you're already doing with another therapist.</p>
+      <p>I also offer EMDR remotely via secure video, so it's available to you wherever you are in California.</p>
+    </div>
+
+    <h2>Who it's for</h2>
+    <p>EMDR is most commonly associated with PTSD and trauma, but it's also effective for anxiety, phobias, grief, performance anxiety, and a range of other issues where the emotional response feels stuck or disproportionate. If you're not sure whether it applies to what you're dealing with, that's a good question for the free consultation.</p>
+
+  </div>
+
+  <aside class="content-sidebar">
+    <div class="sidebar-cta">
+      <h3>Questions about EMDR?</h3>
+      <p>The free consultation is a good place to figure out whether it's the right approach for what you're working on.</p>
+      <a href="#" class="btn-sidebar open-modal">Schedule a free consultation</a>
+      <span class="sidebar-phone">or call <strong>916-345-4189</strong></span>
+    </div>
+    <div class="sidebar-also">
+      <h4>Also offered</h4>
+      <a href="mens-therapy.html" class="sidebar-also-link">Therapy for Men <span>→</span></a>
+      <a href="couples-therapy.html" class="sidebar-also-link">Couples Therapy <span>→</span></a>
+      <a href="integrity-reset.html" class="sidebar-also-link">Integrity Reset <span>→</span></a>
+    </div>
+  </aside>
+</div>
+<footer>
+  <div class="footer-logo">
+    James Baker Psychotherapy
+    <span>MFC49463 · Santa Rosa, CA 95401</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="mens-therapy.html">Men</a></li>
+    <li><a href="couples-therapy.html">Couples</a></li>
+    <li><a href="emdr.html">EMDR</a></li>
+    <li><a href="rates.html">Rates</a></li>
+    <li><a href="privacy-practices.pdf" target="_blank" rel="noopener">Privacy Practices</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2025 James K. Baker, LMFT</p>
+</footer>
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <p class="modal-eyebrow">Free Consultation</p>
+    <h2>Let's figure out if this is a good fit.</h2>
+    <p class="modal-sub">Send a quick note and I'll get back to you within one business day.</p>
+    <form id="contactForm" name="contact" netlify netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><input name="bot-field"></p>
+      <div class="form-row">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="name" placeholder="Your name" required>
+      </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.getElementById("hamburger");
+    const drawer = document.getElementById("drawer");
+    if (hamburger && drawer) {
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        drawer.classList.toggle("open");
+      });
+      drawer.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("open");
+          drawer.classList.remove("open");
+        });
+      });
+    }
+    const modal = document.getElementById("contactModal");
+    const modalClose = document.getElementById("modalClose");
+    if (modal && modalClose) {
+      function openModal() { modal.classList.add("open"); document.body.style.overflow = "hidden"; }
+      function closeModal() { modal.classList.remove("open"); document.body.style.overflow = ""; }
+      document.querySelectorAll(".open-modal").forEach(btn => {
+        btn.addEventListener("click", e => { e.preventDefault(); openModal(); });
+      });
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+      const form = document.getElementById("contactForm");
+      const success = document.getElementById("formSuccess");
+      if (form && success) {
+        form.addEventListener("submit", async e => {
+          e.preventDefault();
+          const data = new FormData(form);
+          try {
+            await fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(data).toString()
+            });
+          } catch(err) {}
+          form.style.display = "none";
+          success.style.display = "block";
+          setTimeout(closeModal, 4000);
+        });
+      }
+    }
+    const reveals = document.querySelectorAll(".reveal");
+    if (reveals.length) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+      }, { threshold: 0.1 });
+      reveals.forEach(el => observer.observe(el));
+    }
+  });
+</script>
+</body>
+</html>
