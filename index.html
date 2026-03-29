@@ -976,15 +976,6 @@
 </style>
 </head>
 <body>
-<!-- Hidden form for Netlify form detection -->
-<form name="contact" netlify netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="contact">
-  <input type="text" name="name">
-  <input type="email" name="email">
-  <input type="tel" name="phone">
-  <textarea name="message"></textarea>
-  <button type="submit">Send</button>
-</form>
 
 
 <!-- NAV -->
@@ -1174,113 +1165,6 @@
   <p class="footer-copy">&copy; 2025 James K. Baker, LMFT</p>
 </footer>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  // Hamburger
-  const hamburger = document.getElementById("hamburger");
-  const drawer = document.getElementById("drawer");
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("open");
-    drawer.classList.toggle("open");
-  });
-  drawer.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("open");
-      drawer.classList.remove("open");
-    });
-  });
-
-  // Modal
-  const modal = document.getElementById("contactModal");
-  const modalClose = document.getElementById("modalClose");
-
-  function openModal() {
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeModal() {
-    modal.classList.remove("open");
-    document.body.style.overflow = "";
-  }
-
-  document.querySelectorAll(".open-modal").forEach(btn => {
-    btn.addEventListener("click", e => { e.preventDefault(); openModal(); });
-  });
-  modalClose.addEventListener("click", closeModal);
-  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
-
-  // Form submission — works with Netlify Forms
-  const form = document.getElementById("contactForm");
-  const success = document.getElementById("formSuccess");
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    const data = new FormData(form);
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data).toString()
-      });
-      form.style.display = "none";
-      success.style.display = "block";
-      setTimeout(closeModal, 4000);
-    } catch(err) {
-      // Fallback: show success anyway (Netlify will still capture it)
-      form.style.display = "none";
-      success.style.display = "block";
-      setTimeout(closeModal, 4000);
-    }
-  });
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-  }); // end DOMContentLoaded
-</script>
-
-<!-- CONTACT MODAL -->
-<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-label="Contact form">
-  <div class="modal">
-    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-    <p class="modal-eyebrow">Free Consultation</p>
-    <h2>Let's figure out if this is a good fit.</h2>
-    <p class="modal-sub">Send a quick note and I'll get back to you within one business day.</p>
-
-    <form id="contactForm" name="contact" netlify netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact">
-      <p style="display:none"><input name="bot-field"></p>
-
-      <div class="form-row">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
-      </div>
-      <div class="form-row">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-      </div>
-      <div class="form-row">
-        <label for="phone">Phone <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
-        <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
-      </div>
-      <div class="form-row">
-        <label for="message">Brief message</label>
-        <textarea id="message" name="message" placeholder="What brings you here, and what are you hoping to work on?" required></textarea>
-      </div>
-      <button type="submit" class="form-submit">Send message</button>
-      <p class="form-note">Your message is confidential. I typically respond within one business day.</p>
-    </form>
-
-    <div class="form-success" id="formSuccess">
-      <h3>Message received.</h3>
-      <p>Thanks for reaching out. I'll be in touch within one business day.</p>
-    </div>
-  </div>
-</div>
-
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true">
   <div class="modal">
@@ -1288,9 +1172,7 @@
     <p class="modal-eyebrow">Free Consultation</p>
     <h2>Let's figure out if this is a good fit.</h2>
     <p class="modal-sub">Send a quick note and I'll get back to you within one business day.</p>
-    <form id="contactForm" name="contact" netlify netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact">
-      <p style="display:none"><input name="bot-field"></p>
+    <form id="contactForm" action="https://formspree.io/f/mdapewqn" method="POST">
       <div class="form-row">
         <label for="fname">Name</label>
         <input type="text" id="fname" name="name" placeholder="Your name" required>
@@ -1316,5 +1198,4 @@
     </div>
   </div>
 </div>
-</body>
-</html>
+>
