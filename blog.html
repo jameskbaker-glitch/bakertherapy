@@ -592,6 +592,48 @@
     height: 14px;
     background: transparent;
   }
+
+  /* ARCHIVE LIST */
+  .archive-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--mist);
+  }
+  .archive-list {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+  .archive-item {
+    border-bottom: 1px solid var(--mist);
+  }
+  .archive-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.1rem 0;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .archive-link:hover { opacity: 0.7; }
+  .archive-title {
+    font-family: "Lora", serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .archive-meta {
+    font-size: 0.78rem;
+    color: var(--stone);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .archive-link { flex-direction: column; gap: 0.3rem; }
+    .archive-meta { white-space: normal; }
+  }
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFTXZK5CE"></script>
@@ -693,6 +735,39 @@
   </div>
 
 
+
+
+  <!-- ALL POSTS ARCHIVE -->
+  <!-- ADD NEW POSTS AT THE TOP OF THIS LIST EACH MONTH -->
+  <div class="archive-section">
+    <p class="blog-section-label">All posts</p>
+    <ul class="archive-list">
+      <li class="archive-item">
+        <a href="posts/blog-post-pruning.html" class="archive-link">
+          <span class="archive-title">What Pruning Season Can Teach You About Letting Go</span>
+          <span class="archive-meta">April 2026 &nbsp;·&nbsp; Men's Therapy</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a href="posts/what-you-actually-wanted.html" class="archive-link">
+          <span class="archive-title">When Was the Last Time You Knew What You Actually Wanted?</span>
+          <span class="archive-meta">March 17, 2026 &nbsp;·&nbsp; Men's Therapy</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a href="posts/anger-is-a-messenger.html" class="archive-link">
+          <span class="archive-title">Anger Is Usually a Messenger, Not the Problem</span>
+          <span class="archive-meta">March 9, 2026 &nbsp;·&nbsp; Men's Therapy</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a href="posts/couples-therapy-what-its-like.html" class="archive-link">
+          <span class="archive-title">What Couples Therapy Is Actually Like (And Why Most Men Dread It)</span>
+          <span class="archive-meta">February 18, 2026 &nbsp;·&nbsp; Relationships</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 </div>
 <footer>
