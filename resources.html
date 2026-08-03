@@ -385,76 +385,123 @@
   }
 
 
-  .resources-intro {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 5rem 5rem 3rem;
-    text-align: center;
-  }
-  .resources-intro p {
-    font-family: "Lora", serif;
-    font-size: 1.05rem;
-    line-height: 1.85;
-    color: var(--stone);
-  }
-  .resources-grid {
+  .resources-wrap {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem 5rem 6rem;
+    padding: 5rem 5rem 7rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--mist);
+    grid-template-columns: 1fr 340px;
+    gap: 6rem;
+    align-items: start;
   }
-  .resource-card {
-    background: var(--cream);
-    padding: 3rem;
-  }
-  .resource-card-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--canopy);
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 1.2rem;
-  }
-  .resource-card-eyebrow::before {
-    content: "";
-    width: 1.5rem;
-    height: 1px;
-    background: var(--canopy);
-  }
-  .resource-card h2 {
+
+  .resources-main h2 {
     font-family: "Playfair Display", serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 400;
     color: var(--ink);
-    margin-bottom: 1rem;
-    line-height: 1.3;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--mist);
   }
-  .resource-card p {
+
+  .resources-main h3 {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--canopy);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .crisis-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--mist);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .crisis-item:last-child { border-bottom: none; }
+
+  .crisis-name {
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .crisis-detail {
     font-family: "Lora", serif;
-    font-size: 0.98rem;
-    line-height: 1.8;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--stone);
   }
-  .resource-placeholder {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-family: "DM Sans", sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mist);
-    border: 1px solid var(--mist);
-    padding: 0.6rem 1.2rem;
+
+  .book-item {
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--mist);
   }
-  @media (max-width: 768px) {
-    .resources-intro { padding: 3.5rem 1.5rem 2rem; }
-    .resources-grid { grid-template-columns: 1fr; padding: 1.5rem 1.5rem 4rem; }
+  .book-item:last-child { border-bottom: none; }
+
+  .book-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .book-author {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--stone);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .book-desc {
+    font-family: "Lora", serif;
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: #4a4845;
+  }
+
+  .resources-sidebar {
+    position: sticky;
+    top: 110px;
+  }
+
+  .sidebar-note {
+    background: var(--parchment);
+    border: 1px solid var(--mist);
+    border-left: 3px solid var(--canopy);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .sidebar-note h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .sidebar-note p {
+    font-family: "Lora", serif;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--stone);
+  }
+
+  @media (max-width: 900px) {
+    .resources-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 3.5rem 1.5rem 5rem; }
+    .resources-sidebar { position: static; }
   }
 
 </style>
@@ -500,27 +547,120 @@
   <div class="page-header-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Resources</div>
     <h1>Resources</h1>
-    <p class="page-header-sub">A curated collection of books, crisis lines, and other resources I recommend to clients and people doing this kind of work.</p>
+    <p class="page-header-sub">Crisis lines, recommended reading, and other resources for clients and people doing this kind of work.</p>
   </div>
 </div>
 
-<div class="resources-intro reveal">
-  <p>This page is being built out. Check back soon.</p>
-</div>
+<div class="resources-wrap reveal">
+  <div class="resources-main">
 
-<div class="resources-grid reveal">
-  <div class="resource-card">
-    <p class="resource-card-eyebrow">Books</p>
+    <!-- CRISIS LINES -->
+    <h2>Crisis Lines</h2>
+
+    <h3>National</h3>
+
+    <div class="crisis-item">
+      <span class="crisis-name">988 Suicide &amp; Crisis Lifeline</span>
+      <span class="crisis-detail">Call or text <strong>988</strong>, available 24/7</span>
+    </div>
+    <div class="crisis-item">
+      <span class="crisis-name">Crisis Text Line</span>
+      <span class="crisis-detail">Text <strong>HOME</strong> to <strong>741741</strong>, available 24/7</span>
+    </div>
+    <div class="crisis-item">
+      <span class="crisis-name">Veterans Crisis Line</span>
+      <span class="crisis-detail">Call <strong>988</strong> then press <strong>1</strong>, or text <strong>838255</strong></span>
+    </div>
+
+    <h3>Local &mdash; Sonoma County</h3>
+
+    <div class="crisis-item">
+      <span class="crisis-name">Sonoma County Crisis Line</span>
+      <span class="crisis-detail"><strong>707-573-3941</strong>, available 24/7</span>
+    </div>
+    <div class="crisis-item">
+      <span class="crisis-name">Verity (sexual assault &amp; domestic violence)</span>
+      <span class="crisis-detail"><strong>707-545-7270</strong>, available 24/7</span>
+    </div>
+    <div class="crisis-item">
+      <span class="crisis-name">Becoming Independent</span>
+      <span class="crisis-detail"><strong>707-542-7070</strong> (developmental disabilities crisis support)</span>
+    </div>
+
+    <!-- BOOKS -->
     <h2>Recommended Reading</h2>
-    <p>Books on relationships, emotional intelligence, trauma, and what it means to live more honestly. Coming soon.</p>
-    <span class="resource-placeholder">Coming soon</span>
+
+    <h3>For Men</h3>
+
+    <div class="book-item">
+      <span class="book-title">No More Mr. Nice Guy</span>
+      <span class="book-author">Robert Glover</span>
+      <p class="book-desc">If you find yourself constantly accommodating others while quietly resenting it, this book is probably about you.</p>
+    </div>
+    <div class="book-item">
+      <span class="book-title">The Way of the Superior Man</span>
+      <span class="book-author">David Deida</span>
+      <p class="book-desc">Worth reading if you're thinking about what you actually want from your relationships and your life.</p>
+    </div>
+    <div class="book-item">
+      <span class="book-title">Iron John</span>
+      <span class="book-author">Robert Bly</span>
+      <p class="book-desc">About what men lose when they don't have meaningful challenge or initiation. Slower read, but it stays with you.</p>
+    </div>
+    <div class="book-item">
+      <span class="book-title">King, Warrior, Magician, Lover</span>
+      <span class="book-author">Robert Moore &amp; Douglas Gillette</span>
+      <p class="book-desc">A framework for thinking about different modes of masculine energy. Useful if you're drawn to that kind of map.</p>
+    </div>
+
+    <h3>Relationships</h3>
+
+    <div class="book-item">
+      <span class="book-title">Hold Me Tight</span>
+      <span class="book-author">Sue Johnson</span>
+      <p class="book-desc">What's actually happening underneath most relationship conflict, and what to do about it.</p>
+    </div>
+    <div class="book-item">
+      <span class="book-title">The Seven Principles for Making Marriage Work</span>
+      <span class="book-author">John Gottman</span>
+      <p class="book-desc">Practical. Based on decades of research. Good if you want concrete things to work on.</p>
+    </div>
+
+    <h3>Anxiety &amp; Emotional Patterns</h3>
+
+    <div class="book-item">
+      <span class="book-title">The Anxiety and Worry Workbook</span>
+      <span class="book-author">Clark &amp; Beck</span>
+      <p class="book-desc">A structured, workbook-style approach. Best if you want something to actively work through rather than just read.</p>
+    </div>
+    <div class="book-item">
+      <span class="book-title">Feeling Good</span>
+      <span class="book-author">David Burns</span>
+      <p class="book-desc">The foundational CBT book. If negative thinking patterns are running the show, start here.</p>
+    </div>
+
+    <h3>Anger</h3>
+
+    <div class="book-item">
+      <span class="book-title">The Dance of Anger</span>
+      <span class="book-author">Harriet Lerner</span>
+      <p class="book-desc">How anger works in relationships and what it's usually pointing at. Direct and practical.</p>
+    </div>
+
   </div>
-  <div class="resource-card">
-    <p class="resource-card-eyebrow">Crisis Support</p>
-    <h2>If You Need Help Now</h2>
-    <p>If you or someone you know is in crisis, please reach out. These resources are available 24 hours a day.</p>
-    <span class="resource-placeholder">Coming soon</span>
-  </div>
+
+  <aside class="resources-sidebar">
+    <div class="sidebar-note">
+      <h4>A note on these resources</h4>
+      <p>These are books and services I find genuinely useful. They're starting points, not prescriptions. If something on this list comes up in our work together, we can talk about whether it makes sense for you.</p>
+    </div>
+    <div class="sidebar-cta">
+      <h3>Questions?</h3>
+      <p>If you're not sure where to start, the free consultation is the right place to ask.</p>
+      <a href="#" class="btn-sidebar open-modal">Get in touch</a>
+      <span class="sidebar-phone">or call <strong>916-345-4189</strong></span>
+    </div>
+  </aside>
 </div>
 <footer>
   <div class="footer-logo">
