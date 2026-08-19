@@ -364,9 +364,9 @@
     gap: 1.2rem;
   }
   .section-label::after { content: ""; flex: 1; height: 1px; background: var(--mist); }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--mist); }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--mist); }
   .service-card {
-    padding: 3.5rem 3rem;
+    padding: 2.75rem 2rem;
     border-right: 1px solid var(--mist);
     text-decoration: none;
     color: inherit;
@@ -397,13 +397,13 @@
   }
   .service-title {
     font-family: "Playfair Display", serif;
-    font-size: 1.75rem;
+    font-size: 1.45rem;
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
     line-height: 1.25;
   }
-  .service-desc { font-size: 1.02rem; line-height: 1.8; color: var(--stone); margin-bottom: 2.2rem; }
+  .service-desc { font-size: 0.95rem; line-height: 1.75; color: var(--stone); margin-bottom: 2rem; }
   .service-link {
     font-size: 0.84rem;
     font-weight: 500;
@@ -661,6 +661,12 @@
     .blog-section { padding: 7rem 3rem; }
     .cta-banner { padding: 6rem 3rem; }
     footer { padding: 4rem 3rem; }
+  }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-card:nth-child(2n) { border-right: none; }
+    .service-card:nth-child(-n+2) { border-bottom: 1px solid var(--mist); }
   }
 
   @media (max-width: 800px) {
@@ -998,6 +1004,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="mens-therapy.html">Men</a></li>
+    <li><a href="mens-groups.html">Groups</a></li>
     <li><a href="couples-therapy.html">Couples</a></li>
     <li><a href="emdr.html">EMDR</a></li>
     <li><a href="resources.html">Resources</a></li>
@@ -1020,6 +1027,7 @@
 <!-- MOBILE DRAWER -->
 <div class="nav-drawer" id="drawer">
   <a href="mens-therapy.html">Men</a>
+  <a href="mens-groups.html">Groups</a>
   <a href="couples-therapy.html">Couples</a>
   <a href="emdr.html">EMDR</a>
   <a href="resources.html">Resources</a>
@@ -1101,6 +1109,12 @@
       <p class="service-desc">Some things don't respond to talk therapy alone. EMDR works differently, and for a lot of people, it works better.</p>
       <span class="service-link">Learn more →</span>
     </a>
+    <a href="mens-groups.html" class="service-card">
+      <span class="service-num">04</span>
+      <h3 class="service-title">Men's Groups</h3>
+      <p class="service-desc">Small groups of men working on one focused goal together, with the support and accountability that only comes from other men.</p>
+      <span class="service-link">Learn more →</span>
+    </a>
   </div>
 </section>
 
@@ -1167,6 +1181,7 @@
   </div>
   <ul class="footer-links">
     <li><a href="mens-therapy.html">Men</a></li>
+    <li><a href="mens-groups.html">Groups</a></li>
     <li><a href="couples-therapy.html">Couples</a></li>
     <li><a href="emdr.html">EMDR</a></li>
     <li><a href="rates.html">Rates</a></li>

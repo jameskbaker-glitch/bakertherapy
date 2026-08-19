@@ -7,7 +7,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Couples Therapy — James Baker Psychotherapy</title>
+<title>Men's Groups — James Baker Psychotherapy</title>
+<meta name="description" content="Time limited therapy groups for men in Sonoma County: No More Mr. Nice Guy, communicating with your partner, and building a social life. Virtual, 90 minute weeknight sessions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 
@@ -320,22 +321,51 @@
   }
 
 
-  .issues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mist); margin-top: 2.5rem; }
-  .issue-item { background: var(--cream); padding: 1.6rem 1.8rem; transition: background 0.2s; }
-  .issue-item:hover { background: var(--parchment); }
-  .issue-title { font-family: "Playfair Display", serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
-  .issue-desc { font-size: 0.92rem; line-height: 1.65; color: var(--stone); }
-  .approach-block { margin-top: 3.5rem; background: var(--parchment); border: 1px solid var(--mist); padding: 2.5rem; }
-  .approach-block h3 { font-family: "Playfair Display", serif; font-size: 1.3rem; font-weight: 400; color: var(--ink); margin-bottom: 1.2rem; }
-  .approach-block p { font-family: "Lora", serif !important; font-size: 1rem !important; line-height: 1.8 !important; color: #3a3835 !important; }
-  .approach-block p + p { margin-top: 1rem; }
-  .ir-callout { margin-top: 3.5rem; background: var(--parchment); border: 1px solid var(--mist); border-left: 3px solid var(--canopy); padding: 2rem 2.2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  .areas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mist); margin-top: 2.5rem; }
+  .area-item { background: var(--cream); padding: 1.6rem 1.8rem; transition: background 0.2s; }
+  .area-item:hover { background: var(--parchment); }
+  .area-title { font-family: "Playfair Display", serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+  .area-desc { font-size: 0.92rem; line-height: 1.65; color: var(--stone); }
+  .ir-callout {
+    margin-top: 3.5rem; background: var(--parchment);
+    border: 1px solid var(--mist); border-left: 3px solid var(--canopy);
+    padding: 2rem 2.2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+  }
   .ir-callout-text h3 { font-family: "Playfair Display", serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
   .ir-callout-text p { font-family: "DM Sans", sans-serif !important; font-size: 0.92rem !important; line-height: 1.65 !important; color: var(--stone) !important; }
-  .ir-callout-link { flex-shrink: 0; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--canopy); text-decoration: none; border: 1px solid var(--canopy); padding: 0.7rem 1.4rem; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+  .ir-callout-link {
+    flex-shrink: 0; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--canopy); text-decoration: none;
+    border: 1px solid var(--canopy); padding: 0.7rem 1.4rem; white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+  }
   .ir-callout-link:hover { background: var(--canopy); color: var(--cream); }
-  @media (max-width: 768px) { .issues-grid { grid-template-columns: 1fr; } .ir-callout { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 768px) { .areas-grid { grid-template-columns: 1fr; } .ir-callout { flex-direction: column; align-items: flex-start; } }
 
+
+  /* Groups page */
+  .group-item { margin-top: 3.5rem; padding-top: 2.75rem; border-top: 1px solid var(--mist); }
+  .group-item:first-of-type { margin-top: 3.5rem; }
+  .group-title {
+    font-family: "Playfair Display", serif; font-size: 1.6rem;
+    font-weight: 600; color: var(--pacific-blue); line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+  .group-subline {
+    font-family: "DM Sans", sans-serif !important; font-size: 0.74rem !important;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--stone) !important; margin-bottom: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  .group-desc { font-family: "Lora", serif; font-size: 1.05rem; line-height: 1.85; color: #3a3835; }
+  .glance-row {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: 0.7rem 0; border-bottom: 1px solid var(--mist);
+    font-family: "DM Sans", sans-serif; font-size: 0.84rem;
+  }
+  .glance-row:last-child { border-bottom: none; }
+  .glance-row span:first-child { color: var(--stone); }
+  .glance-row span:last-child { color: var(--ink); font-weight: 500; text-align: right; }
 
   /* Logistics dropdown */
   .nav-dropdown { position: relative; }
@@ -388,8 +418,8 @@
   </a>
   <ul class="nav-links">
     <li><a href="mens-therapy.html">Men</a></li>
-    <li><a href="mens-groups.html">Groups</a></li>
-    <li><a href="couples-therapy.html" class="active">Couples</a></li>
+    <li><a href="mens-groups.html" class="active">Groups</a></li>
+    <li><a href="couples-therapy.html">Couples</a></li>
     <li><a href="emdr.html">EMDR</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
@@ -409,8 +439,8 @@
 </nav>
 <div class="nav-drawer" id="drawer">
   <a href="mens-therapy.html">Men</a>
-  <a href="mens-groups.html">Groups</a>
-  <a href="couples-therapy.html" class="active">Couples</a>
+  <a href="mens-groups.html" class="active">Groups</a>
+  <a href="couples-therapy.html">Couples</a>
   <a href="emdr.html">EMDR</a>
   <a href="resources.html">Resources</a>
   <a href="about.html">About</a>
@@ -422,42 +452,51 @@
 
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Couples Therapy</div>
-    <h1>Most couples wait too long. <em>You're already here.</em></h1>
-    <p class="page-header-sub">That's worth something. Coming in before a relationship is completely off the rails is one of the best things a couple can do. So is coming in after, for that matter.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Men's Groups</div>
+    <h1>Groups for men, built around <em>a single goal.</em></h1>
+    <p class="page-header-sub">Small, time limited groups where you work on one thing alongside other men doing the same work.</p>
   </div>
 </div>
 <div class="content-wrap">
   <div class="content-main">
-    <p class="lead">Couples therapy works best when both people are willing to look honestly at their part in what's happening. That doesn't require agreeing on who's right. It just requires showing up.</p>
-    <p>In my experience, most couples arrive with some version of the same problem: they've lost the ability to talk to each other without it turning into something else. The original issue gets buried under the argument about the argument. Sessions with me are designed to slow that down, get underneath it, and figure out what's actually going on between the two of you.</p>
-    <p>My approach is direct and collaborative. I'm not a silent observer. I work with you actively, pointing out patterns as they happen in the room, encouraging honesty, and helping each person actually hear what the other is trying to say.</p>
-    <h2>What brings couples in</h2>
-    <div class="issues-grid">
-      <div class="issue-item"><p class="issue-title">Communication breakdowns</p><p class="issue-desc">Arguments that go in circles, conversations that shut down, feeling chronically unheard.</p></div>
-      <div class="issue-item"><p class="issue-title">Intimacy and connection</p><p class="issue-desc">Emotional distance, physical disconnection, or a relationship that's become more functional than close.</p></div>
-      <div class="issue-item"><p class="issue-title">Trust and infidelity</p><p class="issue-desc">Affairs, deception, or the slow erosion of trust that doesn't have a single clear cause.</p></div>
-      <div class="issue-item"><p class="issue-title">Resentment and unresolved conflict</p><p class="issue-desc">Old grievances that never got resolved and keep showing up in new arguments.</p></div>
-      <div class="issue-item"><p class="issue-title">Life transitions</p><p class="issue-desc">Parenting, career changes, loss, or other major shifts that put unexpected pressure on a relationship.</p></div>
-      <div class="issue-item"><p class="issue-title">Non-traditional relationships</p><p class="issue-desc">Open, polyamorous, and consensually non-monogamous relationships, including the specific challenges they bring.</p></div>
+    <p class="lead">These groups run in small, three month cycles, four to six men each, so you get focused work on one goal alongside other men working on the same thing.</p>
+    <p>Groups are also one of the most cost effective ways to get real, targeted time with a licensed therapist. Each group meets once a week, virtually, for ninety minutes, and stays focused on a single topic for the full three months.</p>
+
+    <h2>The three groups</h2>
+
+    <div class="group-item">
+      <h3 class="group-title">No More Mr. Nice Guy</h3>
+      <p class="group-subline">Based on the framework from Dr. Robert Glover's book of the same name</p>
+      <p class="group-desc">This one is for men who spend a lot of energy trying to keep everyone around them happy, at the expense of their own needs. If you find yourself avoiding conflict, over explaining your decisions, seeking approval before you feel allowed to act, or resenting people for not noticing how much you do for them, this group is built for you. We'll work through the Nice Guy patterns directly: where they came from, what they cost you, and what it looks like to operate from integrity instead of approval seeking. You'll have other men in the room doing the same work, which makes it a lot harder to slide back into old habits unnoticed.</p>
     </div>
-    <div class="approach-block">
-      <h3>A note on who I work with</h3>
-      <p>I work with heterosexual and same-sex couples, and with couples in a range of relationship structures including monogamous, open, and polyamorous partnerships. I also provide affirming support for couples involved in kink.</p>
-      <p>Sessions are available in person in Santa Rosa and online throughout California.</p>
+
+    <div class="group-item">
+      <h3 class="group-title">Communicating With Your Partner</h3>
+      <p class="group-subline">Practical work on how you show up in your relationship</p>
+      <p class="group-desc">Most men weren't taught how to talk about what's actually going on with them, especially with a partner. This group focuses on the specific skills that make the biggest difference: naming what you feel before it turns into shutting down or blowing up, listening without immediately defending yourself, and bringing up hard things before they turn into resentment. We'll use real situations from your own relationship as the material, and you'll get direct feedback from me and from the other men, not just theory.</p>
+    </div>
+
+    <div class="group-item">
+      <h3 class="group-title">Building a Social Life</h3>
+      <p class="group-subline">For men who want more friendships and don't know how to start</p>
+      <p class="group-desc">A lot of men get into their thirties, forties, and beyond and realize their social life has quietly disappeared. Work, family, and routine take over, and the friendships either faded or never got built in the first place. This group is for men who want to change that but find the idea of "making friends as an adult" awkward or unclear. We'll work on where to meet people, how to move an acquaintance toward an actual friendship, and how to push past the discomfort of putting yourself out there. You'll also get a built in dose of practice, since you'll be building real connection with the other men in the group itself.</p>
     </div>
   </div>
   <aside class="content-sidebar">
     <div class="sidebar-cta">
-      <h3>Ready to talk?</h3>
-      <p>A free consultation is the easiest way to figure out if we're a good fit before committing to anything.</p>
-      <a href="#" class="btn-sidebar open-modal">Schedule a free consultation</a>
+      <h3>Interested in a group?</h3>
+      <p>Let me know which one appeals to you and I'll reach out about the next start date.</p>
+      <a href="#" class="btn-sidebar open-modal">Tell me you're interested</a>
       <span class="sidebar-phone">or call <strong>916-345-4189</strong></span>
     </div>
     <div class="sidebar-also">
-      <h4>Also offered</h4>
-      <a href="mens-therapy.html" class="sidebar-also-link">Therapy for Men <span>→</span></a>
-      <a href="emdr.html" class="sidebar-also-link">EMDR for Trauma <span>→</span></a>
+      <h4>At a glance</h4>
+      <div class="glance-row"><span>Who</span><span>Men, 18 and over</span></div>
+      <div class="glance-row"><span>Group size</span><span>4 to 6 men</span></div>
+      <div class="glance-row"><span>Format</span><span>Virtual, 90 min</span></div>
+      <div class="glance-row"><span>Schedule</span><span>Weekly, weeknights</span></div>
+      <div class="glance-row"><span>Length</span><span>3 months</span></div>
+      <div class="glance-row"><span>Cost</span><span>$75 per session</span></div>
     </div>
   </aside>
 </div>
@@ -480,10 +519,11 @@
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true">
   <div class="modal">
     <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-    <p class="modal-eyebrow">Free Consultation</p>
-    <h2>Let's figure out if this is a good fit.</h2>
+    <p class="modal-eyebrow">Group Interest</p>
+    <h2>Which group interests you?</h2>
     <p class="modal-sub">Send a quick note and I'll get back to you within one business day.</p>
     <form id="contactForm" action="https://formspree.io/f/mdapewqn" method="POST">
+      <input type="hidden" name="_subject" value="Group interest inquiry">
       <div class="form-row">
         <label for="fname">Name</label>
         <input type="text" id="fname" name="name" placeholder="Your name" required>
@@ -498,7 +538,7 @@
       </div>
       <div class="form-row">
         <label for="fmessage">Brief message</label>
-        <textarea id="fmessage" name="message" placeholder="What brings you here, and what are you hoping to work on?" required></textarea>
+        <textarea id="fmessage" name="message" placeholder="Which group are you interested in, and what are you hoping to work on?" required></textarea>
       </div>
       <button type="submit" class="form-submit">Send message</button>
       <p class="form-note">Your message is confidential. I typically respond within one business day.</p>
